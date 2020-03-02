@@ -1,8 +1,19 @@
 class UsersController < ApplicationController
 
-  # GET: /users/new
+  # signup page
   get "/signup" do
     erb :"/users/new.html"
+  end
+
+  # creates a new user
+  post "/signup" do
+    @user = User.create(:username => params[:username], :email => params[:email], :password_digest => params[:password])
+    if @user.save
+      session[:user_id] = @user.id
+    redirect "/login"
+    else
+      foo
+    end
   end
 
   #logs user in
@@ -10,9 +21,15 @@ class UsersController < ApplicationController
     erb :"/users/login.html"
   end
 
+  #login post request in form to create session
   post "/login" do
-    # session[:user_id] = user.id
-    erb :"/users/:id"
+    @user = User.find_by(username: params[user:][username:]) #find
+    if @user && @user.authenticate(params[user:][password:]) #validates
+      session[:user_id] = @user.id #signs in
+      redirect to '/users/#{user.id}'
+    else
+      erb :'/users/error.html'
+    end
   end
 
   post "/logout" do
@@ -22,15 +39,14 @@ class UsersController < ApplicationController
 
   # displays all listings by user
   get "/users/:id" do
+    if is_logged_in?
+    @user = User.find_by_id(params[:id])
     erb :"/users/show.html"
+  else
+    redirect to '/login'
   end
 
-  # creates a new user
-  post "/users/new" do
-    #create a new user fom params
-    #send validation
-    redirect "/login"
-  end
+
 
   # # GET: /users
   # get "/users" do
