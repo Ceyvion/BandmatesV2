@@ -1,5 +1,6 @@
 require './config/environment'
 
+#In charge of routing of non models 
 class ApplicationController < Sinatra::Base
 
   configure do
@@ -7,7 +8,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
   end
 
-  get "/" do
+  get '/' do
     erb :welcome
   end
 
