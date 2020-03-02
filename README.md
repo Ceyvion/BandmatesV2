@@ -3,8 +3,8 @@ MODELS
     has many listings
     has secure password
     is unique
-      attr: name
       attr: username
+      attr: email
       attr: password
 
   listing

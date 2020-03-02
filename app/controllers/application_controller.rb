@@ -1,6 +1,6 @@
 require './config/environment'
 
-#In charge of routing of non models 
+#In charge of routing of non models
 class ApplicationController < Sinatra::Base
 
   configure do
