@@ -1,7 +1,8 @@
 <!doctype html>
 <html>
+
   <head>
-    <title>Find A Band! - Home</title>
+    <title>FAB! - All Listings</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -19,26 +20,40 @@
     <div class="w3-top">
       <div class="w3-bar w3-red w3-card w3-left-align w3-large">
         <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-        <a href="/users/:id" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+        <a href="/users/<%= current_user.id %>" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
         <a href="/listings/new" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">New Listing</a>
       </div>
 
 
-  <center><h1>Welcome, <%=current_user.username%>!</h1><br>
-  <center><h2><%= Time.now.in_time_zone("Mountain Time (US & Canada)").strftime("%m/%d/%y %I:%M %p") %></h2></center>
+
+      <center><h3>FAB Listings By Other Users:</h3></center>
   <br>
+  <% @not_my_listings.each do |listing| %>
+    <center><div>
+      <!-- <%if listing.title != nil && current_user.listings%> -->
+        <p>Title: <%=listing.title %></p>
+        <p>Location: <%=listing.location%></p>
+        <p>Vibe: <%= listing.vibe %></p>
+        <p>Description: <%= listing.description %></p>
+        <p>Skill: <%= listing.skill %></p>
+        <br>
+      <!-- <%end%> -->
+    </div>
+  <% end %>
 
-<h2>These are your Listings</h2>
+  <p><a href='/logout'>Log Out</a></p>
 
-<div class="nav">
-
-  <center><a href="/users/:id"<%= current_user.id %>">My Listings</a><br><br>
-  <a href="/listings">Other's Listings</a><br><br>
-  <form action="/logout" method="post">
-  <button type="submit" value="submit" style="width:60px;height:60px;">Logout</button>
-  </form></center>
-
-</div>
+    <footer class="w3-container w3-padding-64 w3-center w3-opacity">
+      <div class="w3-xlarge w3-padding-32">
+        <i class="fa fa-facebook-official w3-hover-opacity"></i>
+        <i class="fa fa-instagram w3-hover-opacity"></i>
+        <i class="fa fa-snapchat w3-hover-opacity"></i>
+        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+        <i class="fa fa-twitter w3-hover-opacity"></i>
+        <i class="fa fa-linkedin w3-hover-opacity"></i>
+     </div>
+    </footer></center>
 
   </body>
+
 </html>

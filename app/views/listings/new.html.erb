@@ -1,1 +1,79 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<!DOCTYPE html>
+<html lang="en">
+<title>Find A Band</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
+<body>
+  <div class="w3-top">
+    <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="/users/<%= current_user.id%>" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+    </div>
+
+
+
+<center><form action="/listings/new" method="POST">
+  <p><b>Title:</b> <input type='text' name="title"></p>
+  <p><b>Location:</b> <input type='text' name="location"></p>
+  <p>
+    <b>Vibe?:</b>
+    <select name="vibe">
+      <option value="Indie">Indie</option>
+      <option value="Rock">Rock</option>
+      <option value="Pop">Pop</option>
+      <option value="Jazz">Jazz</option>
+      <option value="Hip-Hop/Rap">Hip-Hop/Rap</option>
+      <option value="Punk">Punk</option>
+      <option value="AltRock">AltRock</option>
+      <option value="Electronic">Electronic</option>
+      <option value="Emo">Emo</option>
+      <option value="Grunge">Grunge</option>
+      <option value="Country">Country</option>
+      <option value="Metal">Metal</option>
+      <option value="Shoegaze">Shoegaze</option>
+    </select>
+  </p>
+  <p>
+    <b>Description:</b><br>
+    <textarea placeholder="Make sure to include a social media handle"rows="4" cols="50" name="description"></textarea>
+  </p>
+  <p>
+    Skill Level:
+    <select name="skill" value="N/A">
+      <option value="N/A">N/A</option>
+      <option value="1">1 star</option>
+      <option value="2">2 stars</option>
+      <option value="3">3 stars</option>
+      <option value="4">4 stars</option>
+      <option value="5">5 stars</option>
+    </select>
+  </p>
+  <p><input type='submit' value='Post!'></p>
+</form>
+
+<p><a href='/logout'>Log Out</a></p>
+<p><a href="/users/<%=current_user.id %>">Cancel</a></p></center>
+
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">
+  <div class="w3-xlarge w3-padding-32">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+ </div>
+
+</footer>
+
+</body>
+</html>

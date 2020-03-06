@@ -4,6 +4,9 @@ class CreateListings < ActiveRecord::Migration
       t.string :title
       t.string :location
       t.string :description
+      t.string :vibe
+      t.string :skill
+      t.integer :user_id
 
       t.timestamps null: false
     end

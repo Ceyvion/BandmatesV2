@@ -1,3 +1,7 @@
+<!-- # user welcome?
+# display all listings, CRUD options on Users listing if !logged_in?
+# redirect to /signout
+# redirect to /listings/new -->
 <!doctype html>
 <html>
   <head>
@@ -19,20 +23,31 @@
     <div class="w3-top">
       <div class="w3-bar w3-red w3-card w3-left-align w3-large">
         <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-        <a href="/users/:id" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+        <a href="/users/<%= current_user.id %>" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
         <a href="/listings/new" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">New Listing</a>
+        <a href="/listings" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Other Listings</a>
       </div>
 
 
   <center><h1>Welcome, <%=current_user.username%>!</h1><br>
-  <center><h2><%= Time.now.in_time_zone("Mountain Time (US & Canada)").strftime("%m/%d/%y %I:%M %p") %></h2></center>
   <br>
+  <h2>These are your Listings</h2>
 
-<h2>These are your Listings</h2>
+  <% @listings.each do |listing| %>
+    <center><div>
+        <p>Title:<a href= "/listings/<%= listing.id%>/edit"> <%=listing.title %></a></p>
+        <p>Location: <%=listing.location%></p>
+        <p>Vibe: <%= listing.vibe %></p>
+        <p>Description: <%= listing.description %></p>
+        <p>Skill: <%= listing.skill %></p>
+        <br>
+    </div>
+  <% end %>
 
+<br>
+<br>
 <div class="nav">
 
-  <center><a href="/users/:id"<%= current_user.id %>">My Listings</a><br><br>
   <a href="/listings">Other's Listings</a><br><br>
   <form action="/logout" method="post">
   <button type="submit" value="submit" style="width:60px;height:60px;">Logout</button>
