@@ -37,6 +37,11 @@ end
   end
 end
 
+def log_current_user_out
+  if logged_in
+    redirect to "/users/"
+
+  end
 
   # shows listings that belong to user
   get "/listings/:id" do

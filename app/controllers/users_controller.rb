@@ -25,6 +25,15 @@ class UsersController < ApplicationController
      # end
    end
 
+   def post_login
+     if current_user is logged_in
+       redirect to 'signup'       
+     end
+   end
+
+
+   end
+
   #logs user in
   get "/login" do
     erb :"/users/login.html", layout: false
